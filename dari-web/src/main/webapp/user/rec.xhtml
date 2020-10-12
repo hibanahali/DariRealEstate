@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:b="http://bootsfaces.net/ui">
+
+
+<head>
+	<title>Dari - Real Estate</title>
+	<meta name="description" content="LERAMIZ Landing Page Template"></meta>
+	<meta name="keywords" content="LERAMIZ, unica, creative, html"></meta>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+	<!-- Favicon -->   
+	<link rel="icon" type="image/png" href="#{request.contextPath}/resources/user_resources/img/logo.png"/>
+
+
+
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet"/>
+
+	<!-- Stylesheets -->
+	<link rel="stylesheet" href="#{request.contextPath}/resources/template_resources/css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="#{request.contextPath}/resources/template_resources/css/font-awesome.min.css"/>
+	<link rel="stylesheet" href="#{request.contextPath}/resources/template_resources/css/owl.carousel.css"/>
+	<link rel="stylesheet" href="#{request.contextPath}/resources/template_resources/css/style.css"/>
+	
+	
+
+
+	<!--[if lt IE 9]>
+	  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+    <script src="#{request.contextPath}/resources/template_resources/js/jquery-3.2.1.min.js"></script>
+	<script src="#{request.contextPath}/resources/template_resources/js/bootstrap.min.js"></script>
+	<script src="#{request.contextPath}/resources/template_resources/js/owl.carousel.min.js"></script>
+	<script src="#{request.contextPath}/resources/template_resources/js/masonry.pkgd.min.js"></script>
+	<script src="#{request.contextPath}/resources/template_resources/js/magnific-popup.min.js"></script>
+	<script src="#{request.contextPath}/resources/template_resources/js/main.js"></script>
+<style type="text/css">
+@page { size: A3 landscape;}
+
+</style>
+</head>
+
+<body >
+
+		<img src="http://localhost/dari_images/dari.png"
+								alt=""></img>
+		
+		<h2 style="text-align:center">Payment Completed Successfully</h2><br></br>
+		<h2 style="text-align:center">Receipt</h2><br></br><br></br><br></br>
+		<h:form>
+			<div class="container mb-4">
+				<div class="row">
+					<div class="col-12">
+							<b>Name : </b><h:outputText value="#{authenticationBean.user.prenom} #{authenticationBean.user.nom}"></h:outputText>
+							<br></br><b>Email : </b><h:outputText value="#{authenticationBean.user.email}"></h:outputText>
+					
+						<div class="table-responsive">
+
+							<h:dataTable class="table table-striped"
+								value="#{furnitureBean.cart}" var="furn">
+
+								<h:column scope="col">
+									<f:facet name="header" class="text-center">
+										<h:outputText class="text-center" value="" />
+									</f:facet>
+									<img width="60" class="rounded-circle" src="#{furn.picture}"
+										alt=""></img>
+								</h:column>
+
+								<h:column scope="col">
+									<f:facet name="header" class="text-center">
+										<h:outputText class="text-center" value="Name" />
+									</f:facet>
+									<h:outputText class="text-center" value="#{furn.nom}" />
+								</h:column>
+								<h:column scope="col">
+									<f:facet name="header" class="text-center">
+										<h:outputText class="text-center" value="Description" />
+									</f:facet>
+									<h:outputText class="text-center" value="#{furn.description}" />
+								</h:column>
+								<h:column scope="col">
+									<f:facet name="header" class="text-center">
+										<h:outputText class="text-center" value="Price" />
+									</f:facet>
+									<h:outputText class="text-center" value="#{furn.price} DT" />
+								</h:column>
+								<h:column scope="col">
+									<f:facet name="header" class="text-center">
+										<h:outputText class="text-center" />
+									</f:facet>
+
+									<h:column scope="col">
+									<f:facet name="header" class="text-center">
+										<h:outputText class="text-center" />
+									</f:facet>
+
+									<b:commandButton class="fa fa-trash btn btn-sm btn-danger"
+										action="#{furnitureBean.RemoveFromCart(furn.id_furniture)}">
+									</b:commandButton>
+
+								</h:column>
+
+								</h:column>
+
+
+							</h:dataTable>
+
+							<table class="table table-striped">
+								<tbody>
+									<tr>
+										
+										<td>Sub-Total</td>
+										<td ><h:outputText
+												value="#{furnitureBean.pricetopay()}">
+												<f:convertNumber type="number" maxFractionDigits="3" />
+											</h:outputText> DT</td>
+									</tr>
+									<tr>
+										
+										<td>Transaction Fees 10%</td>
+										<td ><h:outputText
+												value="#{(furnitureBean.p*10)/100}">
+												<f:convertNumber type="number" maxFractionDigits="3" />
+											</h:outputText> DT</td>
+									</tr>
+									<tr>
+										
+										<td>Shipping</td>
+										<td >10 DT</td>
+									</tr>
+									<tr>
+										
+										<td><strong>Total</strong></td>
+										<td ><strong><h:outputText
+													value="#{furnitureBean.p + 10 + (furnitureBean.p*10)/100}">
+													<f:convertNumber type="number" maxFractionDigits="3" />
+												</h:outputText> DT</strong></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+
+					
+				</div>
+
+			</div>
+
+		</h:form>
+
+<p style="text-align:right">
+<img style ="height: 200px;width: 200px" src="http://localhost/dari_images/stamp.png"
+								alt=""></img></p>
+</body>
+
+
+
+
+</html>

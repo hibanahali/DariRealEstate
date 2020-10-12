@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+
+
+<ui:composition template="/template/template.xhtml">
+
+
+	<ui:define name="content">
+
+		<!-- Page top section -->
+		<section class="page-top-section set-bg"
+			data-setbg="#{request.contextPath}/resources/template_resources/img/page-top-bg.jpg"
+			style="background-image: url(#{request.contextPath}/resources/template_resources/img/page-top-bg.jpg);">
+		<div class="container text-white">
+			<h2>Furniture List</h2>
+		</div>
+		</section>
+		<!--  Page top end -->
+
+		<!-- Breadcrumb -->
+		<div class="site-breadcrumb">
+			<div class="container">
+				<a href=""><i class="fa fa-home"></i>Home</a> <span><i
+					class="fa fa-angle-right"></i>Furniture List</span>
+			</div>
+		</div>
+
+		<!-- page -->
+		<section class="page-section categories-page">
+		<c:if test="#{authenticationBean.loggedIn == 'true'}">
+		<div class="container">
+			<div class="row about-text">
+				<div class="col-xl-6 about-text-left">
+					<a style="background-color: #30CA8D; border: none;"
+						class="btn btn-lg btn-block btn-success text-uppercase"
+						href="#{request.contextPath}/user/addf.jsf">Add Furniture</a>
+
+
+				</div>
+				<div class="col-xl-6 about-text-right">
+					<a style="background-color: #30CA8D; border: none;"
+						class="btn btn-lg btn-block btn-success text-uppercase"
+						href="#{request.contextPath}/user/myfurnitures.jsf">My Furnitures</a>
+
+				</div>
+			</div>
+		</div>
+		</c:if>
+		<style type="text/css">
+.ui-datagrid-no-border>.ui-datagrid-content {
+	border: none;
+}
+
+.ui-panel {
+	border: none;
+}
+</style>
+		<h:form>
+			<h:outputStylesheet name="primeicons/primeicons.css"
+				library="primefaces" />
+
+			<p:dataGrid styleClass="ui-datagrid-no-border" var="furniture"
+				value="#{furnitureBean.furnitures}" columns="3">
+
+				<div class="feature-item">
+
+					<p:panel id="pnl">
+
+						<h:panelGrid columns="1" style="width:100%">
+							<h:outputText class="sale-notic" value="Sold"
+								rendered="#{furniture.sold == 'TRUE'}" />
+							<h:outputText class="rent-notic" value="Available"
+								rendered="#{furniture.sold == 'FALSE'}" />
+
+							<div class="feature-pic set-bg"
+								style="background-image: url(#{furniture.picture});"></div>
+						</h:panelGrid>
+						<div class="feature-text">
+							<div class="text-center feature-title">
+								<h:outputText value="#{furniture.nom}" />
+							</div>
+							<div class="room-info-warp">
+								<div class="room-info">
+									<div class="text-center feature-title">
+										<h:outputText value="#{furniture.description}" />
+										<br></br> <br></br>
+
+									</div>
+								</div>
+								<div class="room-info">
+								<p style="text-align :center">
+								<img width="80" class="rounded-circle"
+								src="#{furniture.user.profile_image}" alt=""></img></p>
+									<div class="text-center feature-title">
+										Posted by
+										<h:outputText value="#{furniture.user.prenom}" />
+										<h:outputText value="#{furniture.user.nom}" />
+
+									</div>
+									<div class="text-center feature-title">
+										Creation Date :
+										<h:outputText value="#{furniture.creation_date}" />
+
+										<br></br> <br></br>
+									</div>
+								</div>
+							</div>
+
+							<div class="room-info">
+								<h:outputText class="room-price"
+									value="Price : #{furniture.price} DT" />
+							</div>
+							<div class="room-info">
+								<h:commandButton disabled="true" f:style="border:none;cursor:pointer"
+									class="room-pricee" action="#" value="SOLD"
+									rendered="#{furniture.sold == 'TRUE'}" />
+								<h:commandButton  f:style="border:none;cursor:pointer"
+									class="room-price"
+									action="#{furnitureBean.AddtoCart(furniture.id_furniture)}"
+									value="Add To Cart" rendered="#{(furniture.sold == 'FALSE') and (furnitureBean.foundincart(furniture.id_furniture) == 'FALSE')}" />
+									
+									<h:commandButton  f:style="border:none;cursor:pointer"
+									class="room-pricee" disabled="true"
+									action="#{furnitureBean.AddtoCart(furniture.id_furniture)}"
+									value="Added In Cart" rendered="#{(furniture.sold == 'FALSE') and (furnitureBean.foundincart(furniture.id_furniture) == 'TRUE')}" />
+							</div>
+							<div class="room-info">
+							<c:if test="#{authenticationBean.loggedIn == 'true'}">
+								<h:commandButton f:style="border:none;cursor:pointer"
+									class="room-pricee" action="#{furnitureBean.report(furniture)}" value="REPORT"
+									/>
+						   </c:if>
+							</div>
+
+
+
+						</div>
+					</p:panel>
+				</div>
+
+			</p:dataGrid>
+		</h:form> </section>
+		<!-- page end -->
+
+
+		<!-- Clients section -->
+		<div class="clients-section">
+			<div class="container">
+				<div class="clients-slider owl-carousel">
+					<a href="#"> <img src="img/partner/1.png" alt=""></img></a> <a
+						href="#"> <img src="img/partner/2.png" alt=""></img></a> <a
+						href="#"> <img src="img/partner/3.png" alt=""></img></a> <a
+						href="#"> <img src="img/partner/4.png" alt=""></img></a> <a
+						href="#"> <img src="img/partner/5.png" alt=""></img></a>
+				</div>
+			</div>
+		</div>
+		<!-- Clients section end -->
+
+	</ui:define>
+
+
+
+</ui:composition>
+
+
+
+
+</html>

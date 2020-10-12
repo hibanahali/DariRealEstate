@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      >
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Affiche </title>
+            </f:facet>
+</h:head>
+ <h:body>
+ 
+ <p:layout fullPage="true">
+
+                <p:layoutUnit position="north" size="10%" resizable="true" closable="false" collapsible="true">
+               <div style="background-image: url('../ressources/header.jpg'); height: 100%; "> </div> 
+   		   </p:layoutUnit>
+   		   
+     	   
+
+		
+
+<p:layoutUnit position="center">
+
+	
+    <h:form id="f1">  
+     
+        
+        <p:dataTable value="#{evaluationBean.listEvals}" var="displayCenter" id="displayCenter" paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
+                paginator="true" rows="10" styleClass="root" editable="true" style="margin-bottom:20px" widgetVar="centersTable" selection="#{evaluationBean.selectedEmpId}" rowKey="#{displayCenter.id}" 
+                 >
+               <f:facet name="header">
+        Contrat
+		
+			</f:facet>
+ 		
+        
+
+                <f:facet name="{Exporters}">
+            <h:commandLink>
+                <p:graphicImage value="/ressources/icons/excel.png" width="30"/>
+                <p:dataExporter type="xls" target="displayCenter" fileName="displayCenter" />
+            </h:commandLink>
+ 
+            <h:commandLink>
+                <p:graphicImage value="/ressources/icons/pdf.png" width="30"/>
+                <p:dataExporter type="pdf" target="displayCenter" fileName="displayCenter"/>
+            </h:commandLink>
+ 
+            <h:commandLink>
+                <p:graphicImage value="/ressources/icons/csv.png" width="30"/>
+                <p:dataExporter type="csv" target="displayCenter" fileName="displayCenter" />
+            </h:commandLink>
+ 
+           
+        </f:facet>
+        <p:column width="200">
+                <f:facet name="header">name</f:facet>
+                <h:outputText value="#{displayCenter.name}" />
+            </p:column>
+          
+            <p:column width="200">
+                <f:facet name="header">date</f:facet>
+                <h:outputText value="#{displayCenter.dateEval}" />
+            </p:column>
+          
+           
+		
+        </p:dataTable>
+      
+    
+    <p:commandButton value="Imprimé le tableau" type="button" icon="ui-icon-print" style="display:block;margin-bottom: 20px">
+    <p:printer target="displayCenter" />
+	</p:commandButton>
+ 
+    <p:dialog header=" Info Agent" widgetVar="centerDialog" modal="true" showEffect="explode" hideEffect="bounce"
+     resizable="false" appendToBody="true" style="z-index: 999 !important;" position ="center" appendTo="@(body)">
+    
+        <p:outputPanel id="centerDetail" style="text-align:center;">
+            <p:panelGrid  columns="2" rendered="#{not empty userBean.us}" columnClasses="label,value">
+                
+ 
+                <h:outputText value="name" />
+                <h:outputText value="#{evaluationBean.name}" />
+ 
+                <h:outputText value="dateEval" />
+                <h:outputText value="#{evaluationBean.dateEval}" />
+                
+                
+                    <h:outputText value="noteB" />
+                <h:outputText value="#{evaluationBean.noteB}" />
+ 
+            </p:panelGrid>
+        </p:outputPanel>
+    </p:dialog>
+         
+
+	
+  <!--    <p:commandButton value="Export as XML" ajax="false" >
+        <p:dataExporter type="xml" target="displayCenter" fileName="irmc-center"/>
+    </p:commandButton>
+    <p:commandButton value="Export as CSV" ajax="false" >
+        <p:dataExporter type="csv" target="displayCenter" fileName="irmc-center"/>
+    </p:commandButton>
+    <p:commandButton value="Export Table as Excel" ajax="false" >
+        <p:dataExporter type="xls" target="displayCenter" fileName="irmc-center"/>
+    </p:commandButton>
+    <p:commandButton value="Export Table as PDF" ajax="false" >
+        <p:dataExporter type="pdf" target="displayCenter" fileName="irmc-center"/>
+    </p:commandButton>
+      -->
+    
+    
+ 
+    </h:form>
+    		</p:layoutUnit>
+		
+</p:layout>
+
+ </h:body>
+ </f:view>
+</html>

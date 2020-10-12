@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<meta charset="utf-8"></meta>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge"></meta>
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1, shrink-to-fit=no"></meta>
+	<meta name="author" content="Thememakker"></meta>
+
+	<title>Dari Add Insurance</title>
+	<!-- Favicon-->
+	<link rel="icon"
+		href="#{request.contextPath}/resources/user_resources/img/logo.png"
+		type="image/x-icon"></link>
+	<!-- Custom Css -->
+	<link rel="stylesheet"
+		href="#{request.contextPath}/resources/user_resources/css/bootstrap.min.css"></link>
+	<link rel="stylesheet"
+		href="#{request.contextPath}/resources/user_resources/css/main.css"></link>
+	<link rel="stylesheet"
+		href="#{request.contextPath}/resources/user_resources/css/authentication.css"></link>
+	<link rel="stylesheet"
+		href="#{request.contextPath}/resources/user_resources/css/color_skins.css"></link>
+</h:head>
+
+<body class="theme-purple authentication sidebar-collapse">
+	<!-- Navbar -->
+	<nav class="navbar navbar-expand-lg fixed-top navbar-transparent">
+	<div class="container">
+		<div class="navbar-translate n_logo">
+			<a class="navbar-brand" href="#{request.contextPath}/index.jsf"
+				title="" target="_blank"><img style="height: 50px"
+				src="#{request.contextPath}/resources/user_resources/img/logo.png"
+				alt=""></img></a>
+			<button class="navbar-toggler" type="button">
+				<span class="navbar-toggler-bar bar1"></span> <span
+					class="navbar-toggler-bar bar2"></span> <span
+					class="navbar-toggler-bar bar3"></span>
+			</button>
+		</div>
+
+	</div>
+
+	<div class="navbar-collapse">
+		<ul class="navbar-nav">
+			<li class="nav-item"><a
+				class="nav-link btn btn-primary btn-round"
+				href="#{request.contextPath}/user/myinsurances.jsf">My
+					Insurances</a></li>
+		</ul>
+	</div>
+	</nav>
+	<!-- End Navbar -->
+	<div class="page-header">
+		<div class="page-header-image"
+			style="background-image: url(#{request.contextPath}/resources/user_resources/img/login.jpg)"></div>
+		<div class="container">
+			<div class="col-md-12 content-center">
+				<div class="card-plain">
+					<h:form id="form" class="form" method="post"
+						enctype="multipart/form-data">
+						<div class="header">
+
+							<img
+								src="#{request.contextPath}/resources/user_resources/img/logo.png"
+								alt=""></img>
+
+							<h5>Add Insurance</h5>
+						</div>
+
+
+						<div class="content">
+
+
+
+							<div class="input-group">
+								<p:calendar placeholder="Enter end date like DD/MM/YY"
+									value="#{InsuranceBean.enddate}" required="true"
+									requiredMessage="Endate is required">
+								</p:calendar>
+								<span class="input-group-addon"> <i
+									class="zmdi zmdi-collection-text"></i>
+								</span>
+							</div>
+
+							<div class="input-group">
+								<h:inputText placeholder="phone number"
+									value="#{InsuranceBean.num}" required="true"
+									requiredMessage="phone number is required">
+								</h:inputText>
+								<span class="input-group-addon"> <i
+									class="zmdi zmdi-collection-text"></i>
+								</span>
+							</div>
+
+
+						</div>
+						<div class="input-group">
+							<p:messages showDetail="true" />
+							<p:captcha label="Captcha" />
+							<br />
+						</div>
+
+
+
+
+						<div class="footer text-center">
+							<h:commandButton id="btn" type="submit" formmethod="post"
+								value="Get Activation Code"
+								class="btn btn-primary btn-round btn-lg btn-block waves-effect waves-light"
+								action="#{InsuranceBean.createI()}">
+							</h:commandButton>
+
+							<h:message for="name" />
+							<br></br>
+							<h:message for="desc" />
+							<br></br>
+
+							<h:message for="btn" />
+						</div>
+					</h:form>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<!-- Jquery Core Js -->
+	<script
+		src="#{request.contextPath}/resources/user_resources/js/libscripts.bundle.js"></script>
+	<script
+		src="#{request.contextPath}/resources/user_resources/js/vendorscripts.bundle.js"></script>
+	<!-- Lib Scripts Plugin Js -->
+	<script>
+		$(".navbar-toggler").on('click', function() {
+			$("html").toggleClass("nav-open");
+		});
+	</script>
+</body>
+
+</html>

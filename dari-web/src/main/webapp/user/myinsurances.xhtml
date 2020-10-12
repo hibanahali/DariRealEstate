@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:b="http://bootsfaces.net/ui">
+
+<ui:composition template="/template/template.xhtml">
+
+
+	<ui:define name="content">
+
+		<!-- Page top section -->
+		<section class="page-top-section set-bg"
+			data-setbg="#{request.contextPath}/resources/template_resources/img/page-top-bg.jpg"
+			style="background-image: url(#{request.contextPath}/resources/template_resources/img/page-top-bg.jpg);">
+		<div class="container text-white">
+			<h2>My Insurances</h2>
+		</div>
+		</section>
+		<!--  Page top end -->
+
+		<!-- Breadcrumb -->
+		<div class="site-breadcrumb">
+			<div class="container">
+				<a href=""><i class="fa fa-home"></i>Home</a> <span><i
+					class="fa fa-angle-right"></i>My Insurances</span>
+			</div>
+		</div>
+
+		<!-- page -->
+		<section style="background-color: #30CA8D"
+			class="jumbotron text-center">
+		<style type="text/css">
+tbody>tr:nth-child(odd)>td, tbody>tr:nth-child(odd)>th {
+	background-color: #30CA8D;
+	color: #61210B;
+}
+</style>
+		<div class="container">
+			<h1 style="color: white" class="jumbotron-heading">MY INSURANCES</h1>
+		</div>
+
+		</section>
+
+
+
+ 
+
+
+		<h:form id="form" method="post" enctype="multipart/form-data">
+			<div class="container mb-4">
+				<div class="row">
+					<div class="col-12">
+						<div class="table-responsive">
+
+							<h:dataTable class="table table-striped"
+								value="#{InsuranceBean.allIn}" var="Ins">
+
+								<h:column scope="col">
+									<f:facet name="header" class="text-center">
+										<h:outputText class="text-center" value="Activation" />
+									</f:facet>
+									<h:outputText class="text-center" value="#{Ins.activation}" />
+								</h:column>
+
+ 
+
+								<h:column scope="col">
+									<f:facet name="header" class="text-center">
+										<h:outputText class="text-center" value="Start Date" />
+									</f:facet>
+									<h:outputText class="text-center" value="#{Ins.startdate}" />
+								</h:column>
+
+ 
+ 
+
+								<h:column scope="col">
+									<f:facet name="header" class="text-center">
+										<h:outputText class="text-center" value="End Date" />
+									</f:facet>
+									<h:outputText class="text-center" value="#{Ins.enddate}" />
+								</h:column>
+
+ 
+
+
+								<h:column scope="col">
+									<f:facet name="header" class="text-center">
+										<h:outputText class="text-center" value="Price(millimes)" />
+									</f:facet>
+									<h:outputText class="text-center" value="#{Ins.price}" />
+								</h:column>
+
+
+
+
+								<h:column scope="col">
+									<f:facet name="header" class="text-center">
+										<h:outputText class="text-center" value="Entreprise" />
+									</f:facet>
+									<h:outputText class="text-center" value="#{Ins.entreprise}" />
+								</h:column>
+
+
+
+							</h:dataTable>
+
+
+						</div>
+					</div>
+
+
+				</div>
+
+			</div>
+
+		</h:form>
+
+
+	</ui:define>
+
+
+
+</ui:composition>
+
+
+
+
+</html>

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:b="http://bootsfaces.net/ui">
+
+
+<head>
+<title>Dari - Real Estate</title>
+<meta name="description" content="LERAMIZ Landing Page Template"></meta>
+<meta name="keywords" content="LERAMIZ, unica, creative, html"></meta>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+<!-- Favicon -->
+<link rel="icon" type="image/png"
+	href="#{request.contextPath}/resources/user_resources/img/logo.png" />
+
+
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro"
+	rel="stylesheet" />
+
+<!-- Stylesheets -->
+<link rel="stylesheet"
+	href="#{request.contextPath}/resources/template_resources/css/bootstrap.min.css" />
+<link rel="stylesheet"
+	href="#{request.contextPath}/resources/template_resources/css/font-awesome.min.css" />
+<link rel="stylesheet"
+	href="#{request.contextPath}/resources/template_resources/css/owl.carousel.css" />
+<link rel="stylesheet"
+	href="#{request.contextPath}/resources/template_resources/css/style.css" />
+
+
+
+
+<!--[if lt IE 9]>
+	  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+
+<script
+	src="#{request.contextPath}/resources/template_resources/js/jquery-3.2.1.min.js"></script>
+<script
+	src="#{request.contextPath}/resources/template_resources/js/bootstrap.min.js"></script>
+<script
+	src="#{request.contextPath}/resources/template_resources/js/owl.carousel.min.js"></script>
+<script
+	src="#{request.contextPath}/resources/template_resources/js/masonry.pkgd.min.js"></script>
+<script
+	src="#{request.contextPath}/resources/template_resources/js/magnific-popup.min.js"></script>
+<script
+	src="#{request.contextPath}/resources/template_resources/js/main.js"></script>
+<style type="text/css">
+@page {
+	size: A3 landscape;
+}
+</style>
+</head>
+
+
+<body>
+
+
+	<h2 style="text-align: center">Contract Model</h2>
+
+	<div>
+		<br></br>
+
+		<h:outputText value="#{contractBean.mycontract.description}">
+		</h:outputText>
+
+
+		<h6>For value received , This Lease Agreement is made and
+			executed by</h6>
+		<h:outputText value="#{contractBean.mycontract.user.nom}">
+		</h:outputText>
+		<h6></h6>
+		<h:outputText value="#{contractBean.mycontract.user.prenom}">
+		</h:outputText>
+		<h6></h6>
+		<h6>THIS</h6>
+		<h:outputText value="#{contractBean.mycontract.typeCont}">
+		</h:outputText>
+		<h6>CONTRACT, effective as of , is made and entered into by and
+			between DariRealEstate, a company organized and existing in Tunisia,
+			Ariana,</h6>
+		<h6>For a Total ice equal to</h6>
+		<h:outputText value="#{contractBean.mycontract.price}">
+		</h:outputText>
+		<h6>Tunisian Dinar DT</h6>
+		<h6>From a start Date</h6>
+
+		<h:outputText value="#{contractBean.mycontract.startdate}">
+		</h:outputText>
+		<h6>To an end date</h6>
+
+
+		<h:outputText value="#{contractBean.mycontract.enddate}">
+		</h:outputText>
+
+		<br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br />
+
+		<h6>Signature Dari Real Estate</h6>
+
+
+		<h:outputText value="#{contractBean.now}">
+		</h:outputText>
+
+
+
+	</div>
+
+
+</body>
+
+
+
+
+</html>
